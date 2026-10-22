@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Reel</title>
+<meta name="viewport" content="width=1080, height=1920">
+<!--
+  Modelo de reel em pé da camada motion-v3 (escrito para o motion-kit, não é código da motionmaxxing).
+  O `npm run novo -- --motor v3` copia este arquivo e o runtime/ da motionmaxxing (./v3/runtime) para a pasta do reel.
+  Para a estrutura de batidas e a API do motor (M.words, M.enter, M.cut, M.show, M.hero3d...), leia
+  v3/templates/film.html e v3/runtime/README.md no clone da motionmaxxing.
+-->
+<link rel="stylesheet" href="tema.css">
+<link rel="stylesheet" href="./runtime/fonts.css">
+<style>
+/* As cores e as fontes vêm do tema.css que o `novo` grava a partir do kit da marca. */
+:root {
+  --ground: var(--fundo);
+  --ground-2: var(--superficie);
+  --ink: var(--tinta);
+  --ink-soft: var(--suave);
+  --accent: var(--acento);
+  --font: var(--fonte-titulo);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #000; }
+#main { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: hidden; background: var(--ground); color: var(--ink); font-family: var(--font); font-weight: 500; }
+/* Margem segura do 9:16: 8% nas laterais, 12% em cima; nada nos 20% de baixo (interface do Reels). */
+.segura { position: absolute; left: 8%; right: 8%; top: 12%; bottom: 20%; }
+.scene { position: absolute; inset: 0; }
+.cam { position: absolute; inset: 0; }
+</style>
+</head>
+<body>
+<div id="main">
+  <!-- Uma <section class="scene"> por cena do cenas.json. Texto sempre dentro de .segura, sobre cartão ou faixa sólida. -->
+</div>
+
+<script src="./runtime/vendor/gsap.min.js"></script>
+<script src="./runtime/motion.js"></script>
+<script>
+// Tudo o que aparece é função do tempo: só chamadas do motor, sem timers, Date ou Math.random.
+// A duração aqui precisa ser igual à soma das cenas do cenas.json (o `verificar` confere).
+const M = Motion.film({ fps: 30, duration: 15, width: 1080, height: 1920, clock: 'smooth' });
+
+window.__ready = Motion.loaded().then(() => { if (/selftest/.test(location.search)) Motion.selfTest(M, { samples: 24 }); });
+</script>
+</body>
+</html>

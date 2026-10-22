@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Logo provisório: troque por public/logo.svg da marca. Sem texto, para não depender de fonte. -->
+  <circle cx="100" cy="100" r="86" fill="none" stroke="#F3F5FF" stroke-width="14"/>
+  <rect x="62" y="62" width="76" height="76" rx="10" fill="#F3F5FF"/>
+  <circle cx="138" cy="138" r="18" fill="#FF4F7B"/>
+</svg>

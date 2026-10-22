@@ -1,0 +1,14 @@
+/* Base do reel 1080x1920. Cores e fontes vêm de tema.css (gerado pelo `novo`). */
+html, body { margin: 0; width: 100%; height: 100%; background: var(--fundo); }
+#root { position: relative; width: 100%; height: 100%; overflow: hidden; font-family: var(--fonte-texto); color: var(--tinta); }
+/* Margem segura do 9:16: 8% nas laterais, 12% em cima e embaixo. */
+.cena { position: absolute; inset: 0; padding: 12% 8%; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; }
+/* Imagens dentro da cena (coluna flexível) não podem esticar: a logo sai espremida. */
+.cena > img { align-self: flex-start; object-fit: contain; }
+.titulo { font-family: var(--fonte-titulo); font-weight: 800; font-size: 96px; line-height: 1.08; margin: 0; max-width: 100%; }
+.titulo em { font-style: normal; color: var(--acento); }
+.apoio { font-family: var(--fonte-texto); font-weight: 400; font-size: 40px; line-height: 1.35; color: var(--suave); margin: 36px 0 0; }
+.rotulo { font-family: var(--fonte-rotulo); font-weight: 600; font-size: 28px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--acento); margin: 0 0 32px; }
+/* Marca fixa no canto de cima e assinatura acima da faixa da interface do Reels (últimos 20%). */
+.marca-fixa { position: absolute; top: 5%; left: 8%; height: 96px; width: auto; }
+.assinatura { position: absolute; bottom: 21%; left: 8%; font-family: var(--fonte-rotulo); font-weight: 600; font-size: 26px; letter-spacing: 0.12em; color: var(--suave); }

@@ -1,0 +1,1 @@
+{ "bpm": 120, "cenas": [ { "id": "abertura", "duracao": 16, "transicao": "corte", "texto": "Título da abertura" } ] }

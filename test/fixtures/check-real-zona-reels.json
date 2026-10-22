@@ -1,0 +1,148 @@
+{
+  "ok": false,
+  "strict": false,
+  "browserSkipped": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 3,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<p data-start=\"0\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "reels/2026-10-09-prova/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<section id=\"a\"> is a timeline element that contains nested <h1>. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#a",
+        "dataAttributes": {},
+        "sourceFile": "reels/2026-10-09-prova/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <section id=\"a\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<section id=\"b\"> is a timeline element that contains nested <h1>. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#b",
+        "dataAttributes": {},
+        "sourceFile": "reels/2026-10-09-prova/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <section id=\"b\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      }
+    ],
+    "filesScanned": 1
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": false,
+    "errorCount": 1,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [
+      {
+        "selector": "p[data-start=\"0\"]",
+        "dataAttributes": {
+          "data-start": "0",
+          "data-duration": "16"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 86.39,
+          "y": 1723.41,
+          "width": 324.45,
+          "height": 43
+        },
+        "time": 7.968,
+        "rect": {
+          "left": 86.39,
+          "top": 1723.41,
+          "right": 410.84,
+          "bottom": 1766.41,
+          "width": 324.45,
+          "height": 43
+        },
+        "code": "caption_zone_collision",
+        "severity": "error",
+        "text": "Fale no WhatsApp",
+        "message": "<p> \"Fale no WhatsApp\" overlaps the reserved caption band (~9% up from the bottom).",
+        "fixHint": "Keep main content outside the configured caption band, or mark intentional lower-third copy with data-layout-allow-caption-zone.",
+        "firstSeen": 7.968,
+        "lastSeen": 15.968,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          7.968,
+          15.968
+        ]
+      }
+    ],
+    "duration": 16,
+    "samples": [
+      7.967,
+      7.968,
+      15.967,
+      15.968
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 1,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      7.967,
+      15.967
+    ],
+    "checked": 7,
+    "passed": 7
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "ok": false,
+  "strict": false,
+  "browserSkipped": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 1,
+    "infoCount": 0,
+    "filesScanned": 1,
+    "findings": [
+      {
+        "code": "font_family_without_font_face",
+        "severity": "warning",
+        "message": "aviso de exemplo"
+      }
+    ]
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "caption_zone",
+        "severity": "error",
+        "message": "texto na zona do Reels"
+      }
+    ]
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "contrast_fail",
+        "severity": "error",
+        "message": "contraste 2.9:1 abaixo de 4.5:1",
+        "text": "Fale no WhatsApp"
+      }
+    ],
+    "checked": 8,
+    "passed": 8
+  }
+}

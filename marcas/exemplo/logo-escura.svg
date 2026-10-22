@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="96" viewBox="0 0 360 96">
+  <!-- Logo fictícia da Marca Exemplo, para fundo claro. Só formas, sem texto, para não depender de fonte. -->
+  <circle cx="48" cy="48" r="38" fill="none" stroke="#14213D" stroke-width="10"/>
+  <rect x="34" y="34" width="28" height="28" rx="4" fill="#F2A541"/>
+  <rect x="112" y="30" width="236" height="14" rx="7" fill="#14213D"/>
+  <rect x="112" y="56" width="160" height="10" rx="5" fill="#4A5670"/>
+</svg>

@@ -1,0 +1,9 @@
+{
+  "id": "exemplo",
+  "nome": "Marca Exemplo",
+  "cores": { "fundo": "#14213D", "superficie": "#1F2E52", "tinta": "#F5F1E8", "suave": "#B8BFCC", "acento": "#F2A541", "acento2": "#7FD1B9" },
+  "fontes": { "titulo": "Archivo", "texto": "Inter", "rotulo": "IBM Plex Mono" },
+  "logo": { "clara": "logo-clara.svg", "escura": "logo-escura.svg" },
+  "assinatura": "@marcaexemplo",
+  "proibidos": []
+}

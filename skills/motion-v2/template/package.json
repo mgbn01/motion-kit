@@ -1,0 +1,36 @@
+{
+  "name": "motion-v2-filme",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Template Remotion da skill motion-v2",
+  "scripts": {
+    "studio": "remotion studio",
+    "validar": "tsx scripts/validar.ts",
+    "stills": "tsx scripts/stills.ts",
+    "tempos": "tsx scripts/tempos.ts",
+    "render": "tsx scripts/render.ts",
+    "anonimizar": "tsx scripts/anonimizar.ts",
+    "entregar": "tsx scripts/entregar.ts",
+    "tipos": "tsc --noEmit",
+    "importar-midia": "tsx scripts/importar-midia.ts",
+    "contraste": "tsx scripts/contraste.ts",
+    "juntar": "tsx scripts/juntar.ts"
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.532",
+    "@remotion/cli": "4.0.532",
+    "@remotion/fonts": "4.0.532",
+    "@remotion/layout-utils": "4.0.532",
+    "@remotion/renderer": "4.0.532",
+    "@remotion/transitions": "4.0.532",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "remotion": "4.0.532"
+  },
+  "devDependencies": {
+    "@types/node": "22.15.0",
+    "@types/react": "19.1.0",
+    "tsx": "4.20.3",
+    "typescript": "5.8.3"
+  }
+}
