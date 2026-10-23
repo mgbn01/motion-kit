@@ -1,6 +1,6 @@
 # HyperFrames: o essencial para o Motion
 
-Versão fixa: `hyperframes@0.8.143` (no `package.json`). Para o resto, a documentação oficial do HyperFrames e as skills `hyperframes-*`.
+Versão fixa: `hyperframes@0.8.186` (no `package.json`). Para o resto, a documentação oficial do HyperFrames e as skills oficiais `/hyperframes` (contrato, laço de trabalho e uma referência por tipo de vídeo, como `references/types/vertical.md`), `/hyperframes-cli`, `/hyperframes-registry` (blocos e transições) e `/media-use`. As antigas `hyperframes-core`, `-animation`, `-creative`, `-keyframes`, `-studio` e `-audio` viraram capítulos da `/hyperframes`.
 
 ## Contrato da composição
 - A raiz fica direto no `<body>`, sem `<template>`: `<div id="root" data-composition-id="main" data-width="1080" data-height="1920" data-duration="<s>" data-fps="30">`.
@@ -28,7 +28,7 @@ Versão fixa: `hyperframes@0.8.143` (no `package.json`). Para o resto, a documen
 | quadros para olhar | `hyperframes snapshot . --at 0.5,3.2 --describe false -o quadros` (gera `contact-sheet.jpg`) |
 | recorte ampliado | `hyperframes snapshot . --at 3.2 --zoom ".titulo" --describe false` |
 | render | `hyperframes render . -q delivery --fps 30 -o renders/reel-1080.mp4` |
-| saúde do ambiente | `hyperframes doctor --json` (olhar `.ok`) |
+| saúde do ambiente | `hyperframes doctor --json`: olhar Node.js, FFmpeg, FFprobe e Chrome. O `.ok` geral sai `false` só por itens opcionais (whisper-cpp, Kokoro, MusicGen, Docker) ou memória livre baixa |
 | navegador de render | `hyperframes browser ensure` (baixa o chrome-headless-shell em `~/.cache/hyperframes/chrome`) |
 
 Todo comando roda com `HYPERFRAMES_NO_TELEMETRY=1`, `DO_NOT_TRACK=1`, `HYPERFRAMES_NO_UPDATE_CHECK=1` e `HYPERFRAMES_SKIP_SKILLS=1`, sem `GEMINI_API_KEY` no ambiente. Os scripts do repositório já fazem isso.
@@ -36,6 +36,7 @@ Todo comando roda com `HYPERFRAMES_NO_TELEMETRY=1`, `DO_NOT_TRACK=1`, `HYPERFRAM
 ## Armadilhas
 - Lint com erro **zera** as amostras do `check` ("0 sample(s)"): parece limpo, mas não é. Corrija o lint primeiro.
 - O hyperframes rebaixa a aviso a falha vista numa amostra só, pensando em texto entrando ou saindo. O `verificar` mede só no fim assentado de cada cena e trata qualquer falha de contraste, vazamento ou faixa do Reels como reprovação. O contraste é medido em no máximo 5 momentos por `check`, por isso o `verificar` roda em lotes.
+- Transição de shader (`HyperShader.init`, como `glitch` e `cinematic-zoom`): ponha `<script>window.__HF_SHADER_LOADING = 'none';</script>` antes do `HyperShader.init`. Sem isso, fora do render o HyperShader cobre a tela com um painel de carregamento, que o `check` mede como se fosse do vídeo. O `verificar` reprova o reel sem essa linha.
 - Blur, `backdrop-filter` e muitas sombras animadas deixam o render bem mais lento: prefira faixas sólidas.
 - Português é 20 a 30% mais longo que o inglês: confira o vazamento com o `check` e o recorte ampliado.
 - Máquina com 8 GB ou menos entra sozinha no modo de pouca memória (1 navegador): o render fica mais lento, mas sai igual.

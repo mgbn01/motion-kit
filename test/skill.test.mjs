@@ -33,6 +33,24 @@ test('todo exemplo de cenas.json em arcos.md é válido', () => {
   for (const b of blocos) assert.equal(validarCenas(b).ok, true, validarCenas(b).erros.join('; '));
 });
 
+// O HyperFrames 0.8.186 juntou as skills de apoio (core, animation, creative…) numa só; hoje existem estas.
+const SKILLS_HYPERFRAMES = ['hyperframes', 'hyperframes-cli', 'hyperframes-registry', 'media-use'];
+const referencias = ['arcos.md', 'hyperframes.md', 'checklist-qa.md'].map((r) => readFileSync(join(RAIZ, 'skills/motion-reels/referencias', r), 'utf8'));
+
+test('a skill só manda usar skills do HyperFrames que existem', () => {
+  const textos = [skill, ...referencias].join('\n');
+  const citadas = new Set([...textos.matchAll(/(?:^|[\s`(])\/(hyperframes(?:-[a-z]+)*|media-use)\b/gm)].map((m) => m[1]));
+  for (const nome of citadas) assert.ok(SKILLS_HYPERFRAMES.includes(nome), `/${nome} não existe mais no HyperFrames`);
+  assert.ok(!textos.includes('hyperframes-animation/transitions'), 'o catálogo de transições agora é o registro (/hyperframes-registry)');
+  for (const nome of SKILLS_HYPERFRAMES) assert.ok(skill.includes(`/${nome}`), `a skill deve indicar /${nome}`);
+});
+
+test('a referência do HyperFrames cita a versão fixada no package.json', () => {
+  const pacote = JSON.parse(readFileSync(join(RAIZ, 'package.json'), 'utf8'));
+  const versao = pacote.devDependencies?.hyperframes ?? pacote.dependencies?.hyperframes;
+  assert.ok(referencias[1].includes(`hyperframes@${versao}`), `referencias/hyperframes.md deve citar hyperframes@${versao}`);
+});
+
 test('instalar cria link e não sobrescreve destino diferente', () => {
   const d = mkdtempSync(join(tmpdir(), 'skills-'));
   const destino = join(d, 'motion-reels');

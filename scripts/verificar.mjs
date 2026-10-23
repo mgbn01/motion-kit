@@ -3,7 +3,7 @@ import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { ambienteHyperframes, comandoHyperframes, rodar } from '../lib/ambiente.mjs';
 import { validarCenas, temposDosQuadros } from '../lib/cenas.mjs';
-import { avaliarCheck, temPendente, hashReel, conferirMarca } from '../lib/relatorio.mjs';
+import { avaliarCheck, temPendente, hashReel, conferirMarca, conferirShader } from '../lib/relatorio.mjs';
 import { validarCenasV3, duracaoDoFilme, filtrarLint, avaliarGates, rodarV3 } from '../lib/v3.mjs';
 import { carregarMarca } from '../lib/marcas.mjs';
 import { TIPOS } from './novo.mjs';
@@ -93,6 +93,7 @@ export async function verificarReel(pasta, { cena, rodarHf = rodarHyperframes, c
   const tipo = doBrief(pasta, 'tipo');
   if (!TIPOS.includes(tipo)) falhas.push(`BRIEF.md sem tipo válido (${TIPOS.join(', ')})`);
   falhas.push(...conferirMarca({ html, cenasTexto, marca, tipo, carregar }));
+  falhas.push(...conferirShader(html));
 
   // Momento assentado de cada cena: o último quadro antes da troca, com as entradas já terminadas.
   const alvo = cena ? v.cenas.filter((c) => c.id === cena) : v.cenas;

@@ -138,3 +138,11 @@ test('pasta V2 sem motor segue no hyperframes e não chama a V3', async () => {
   assert.equal(v3, 0);
   assert.doesNotMatch(readFileSync(join(pasta, 'BRIEF.md'), 'utf8'), /^motor:/m);
 });
+
+test('transição de shader com o painel de carregamento ligado reprova com a instrução', async () => {
+  const pasta = reel(cenas);
+  writeFileSync(join(pasta, 'index.html'), readFileSync(join(pasta, 'index.html'), 'utf8').replace('</body>', '<script>HyperShader.init({});</script></body>'));
+  const r = await verificarReel(pasta, { carregar: marcaTeste, rodarHf: hfFalso({ ok: true, lint: { findings: [] } }) });
+  assert.equal(r.aprovado, false);
+  assert.ok(r.falhas.some((f) => /__HF_SHADER_LOADING/.test(f)), r.falhas.join('; '));
+});

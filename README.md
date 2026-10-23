@@ -94,7 +94,7 @@ Parte da V1 e sobe de nível: imagem realista ao fundo e em movimento, objeto 3D
 
 ### V1/V2 em HyperFrames · motion-reels
 
-O método da V1 e da V2 levado ao HyperFrames para reels. Junta a grade, a aprovação e a verificação da linha Remotion com os tipos de peça e as regras de marca. Usa as skills oficiais `hyperframes-core`, `hyperframes-animation`, `hyperframes-creative` e `hyperframes-registry` para o movimento, se estiverem instaladas; em conflito, valem esta skill e o kit da marca. Depende dos scripts deste repositório.
+O método da V1 e da V2 levado ao HyperFrames para reels. Junta a grade, a aprovação e a verificação da linha Remotion com os tipos de peça e as regras de marca. Usa as skills oficiais do HyperFrames para o movimento (desde a versão 0.8.186: `hyperframes`, `hyperframes-registry`, `hyperframes-cli` e `media-use`), se estiverem instaladas; em conflito, valem esta skill e o kit da marca. Depende dos scripts deste repositório.
 
 **Tipos:** `venda` (anúncio de produto ou imóvel; se a sua área exige registro profissional no anúncio, como o corretor de imóveis, ele entra na tela, como o conselho exige), `comercial` (só a marca do cliente) e `viral` (gancho em 1–2 s, um corte a cada 1–2 s, final que faz rever ou comentar).
 

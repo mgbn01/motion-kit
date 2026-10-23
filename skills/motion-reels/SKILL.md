@@ -48,8 +48,8 @@ Fale com a pessoa em português simples, frases curtas, um passo por vez, avisan
 - Ajuste o `data-duration` do `#root` para a duração total.
 - Anime na **timeline única** (`gsap.timeline({ paused: true })`, registrada em `window.__timelines.main`), com `fromTo` e posições absolutas em segundos. As transições entre cenas também ficam na timeline.
 - Depois de cada cena: `npm run verificar -- reels/<pasta> --cena <id>`. **Abra os PNGs listados com a ferramenta Read** (início, meio e fim da cena) e confira tudo de `referencias/checklist-qa.md`. Só passe para a próxima cena quando esta estiver certa.
-- Técnica de animação: **use de verdade** as skills oficiais `/hyperframes-core`, `/hyperframes-animation`, `/hyperframes-creative` e `/hyperframes-registry`, se estiverem instaladas. Elas são a fonte de qualidade do movimento; esta skill só acrescenta marca, segurança e entrega. Quando conflitarem com esta skill ou com o kit da marca, **vale esta skill e o kit**.
-- **Transições:** além das 6 de base (`corte`, `dissolve`, `deslize`, `mascara`, `zoom`, `clarao`), vale qualquer transição do catálogo oficial (`hyperframes-animation/transitions/`), CSS ou shader, com o nome do catálogo no `cenas.json` (ex.: `shader-wipe`, `light-leak`). Escolha pela energia da cena, não pela novidade: no máximo 2 transições "de efeito" por reel; o resto é corte na batida.
+- Técnica de animação: **use de verdade** as skills oficiais do HyperFrames: `/hyperframes` (o contrato e, para reel, `references/types/vertical.md`, `references/motion.md` e `references/format.md`), `/hyperframes-registry` (blocos e transições prontos), `/hyperframes-cli` (os comandos) e `/media-use` (música, efeitos e tratamento de mídia). Elas são a fonte de qualidade do movimento; esta skill só acrescenta marca, segurança e entrega. Quando conflitarem com esta skill ou com o kit da marca, **vale esta skill e o kit**. Em especial: não abra o Studio nem o app de desktop do HyperFrames, porque a prévia segue o fluxo deste kit.
+- **Transições:** além das 6 de base (`corte`, `dissolve`, `deslize`, `mascara`, `zoom`, `clarao`), vale qualquer transição do registro oficial, achada com `node_modules/.bin/hyperframes catalog --query "<o que a passagem faz, em inglês>" --json`, com o nome do registro no `cenas.json` (ex.: `light-leak`, `cinematic-zoom`, `directional-wipe`). Escolha pela energia da cena, não pela novidade: no máximo 2 transições "de efeito" por reel; o resto é corte na batida.
 - **Efeitos com nome** (grão de filme, glitch, brilho, gráfico, terminal, mapa, confete etc.): antes de construir à mão, procure no registro oficial com `/hyperframes-registry` e instale com `node_modules/.bin/hyperframes add <nome> --no-clipboard`. Os arquivos ficam dentro da pasta do reel, então o render não busca nada fora. Só o registro oficial do HyperFrames; bloco de terceiros, não.
 
 ### 4. Verificação completa
@@ -87,7 +87,7 @@ Fale com a pessoa em português simples, frases curtas, um passo por vez, avisan
   - sem `tl.play()`;
   - sem animar `display` ou `visibility` em `.clip`;
   - não deixar no CSS um `transform` inicial na mesma propriedade que o GSAP anima (use `fromTo`).
-- **Proibido usar:** `hyperframes preview`, `publish`, `cloud`, `lambda`, `snapshot` sem `--describe false`, e blocos de fora do registro oficial do HyperFrames.
+- **Proibido usar:** `hyperframes preview`, `open` (o app de desktop), `publish`, `cloud`, `lambda`, `snapshot` sem `--describe false`, e blocos de fora do registro oficial do HyperFrames.
 - **Sem segredo à vista.** Chaves só no `.env` (fora do Git). Nunca imprima o `.env`.
 - **Gastar crédito** (voz, música, gerador de imagem ou vídeo) pede OK com o valor estimado.
 - **Se algo falhar,** mostre o erro real e a correção. Não contorne em silêncio.

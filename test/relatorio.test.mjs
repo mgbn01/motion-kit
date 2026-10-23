@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { avaliarCheck, procurarProibidos, temPendente } from '../lib/relatorio.mjs';
+import { avaliarCheck, procurarProibidos, temPendente, conferirShader } from '../lib/relatorio.mjs';
 const fx = (n) => JSON.parse(readFileSync(new URL(`./fixtures/${n}.json`, import.meta.url), 'utf8'));
 
 test('check aprovado tem avisos mas nenhuma falha', () => {
@@ -49,22 +49,33 @@ test('termo proibido é achado mesmo quebrado por tag ou entidade (I5)', () => {
   assert.deepEqual(procurarProibidos('<p>Eng. <em>Fulano</em> de&nbsp;Tal</p>', ['Fulano de Tal']), ['Fulano de Tal']);
 });
 
-test('hash muda com estilo e imagens, não com quadros e saídas (I6)', async () => {
+test('hash muda com estilo e imagens, não com quadros, saídas e estado do hyperframes (I6)', async () => {
   const { mkdtempSync, writeFileSync, mkdirSync } = await import('node:fs');
   const { tmpdir } = await import('node:os');
   const { join } = await import('node:path');
   const { hashReel } = await import('../lib/relatorio.mjs');
   const p = mkdtempSync(join(tmpdir(), 'motion-'));
-  for (const d of ['assets', 'quadros', 'renders']) mkdirSync(join(p, d));
+  for (const d of ['assets', 'quadros', 'renders', '.hyperframes']) mkdirSync(join(p, d));
   writeFileSync(join(p, 'index.html'), 'a'); writeFileSync(join(p, 'estilo.css'), 'b'); writeFileSync(join(p, 'assets', 'f.jpg'), 'c');
   const h0 = hashReel(p);
   writeFileSync(join(p, 'quadros', 'x.png'), 'q'); writeFileSync(join(p, 'renders', 'r.mp4'), 'r'); writeFileSync(join(p, 'verificacao.json'), '{}');
+  // Desde o 0.8.186, todo comando do hyperframes grava o próprio estado em .hyperframes/.
+  writeFileSync(join(p, '.hyperframes', 'video-state.json'), '{}');
   assert.equal(hashReel(p), h0);
   writeFileSync(join(p, 'estilo.css'), 'b2');
   const h1 = hashReel(p);
   assert.notEqual(h1, h0);
   writeFileSync(join(p, 'assets', 'f.jpg'), 'c2');
   assert.notEqual(hashReel(p), h1);
+});
+
+test('transição de shader só passa com o painel de carregamento desligado antes do init', () => {
+  const init = '<script src="./assets/vendor/hyper-shader.js"></script><script>const tl = HyperShader.init({});</script>';
+  const desliga = "<script>window.__HF_SHADER_LOADING = 'none';</script>";
+  assert.deepEqual(conferirShader('<p>sem shader</p>'), []);
+  assert.deepEqual(conferirShader(desliga + init), []);
+  assert.match(conferirShader(init).join(), /__HF_SHADER_LOADING = 'none'.*antes do HyperShader\.init/);
+  assert.equal(conferirShader(init + desliga).length, 1);
 });
 
 test('saídas reais do hyperframes 0.8.143: faixa do Reels e contraste reprovam', () => {

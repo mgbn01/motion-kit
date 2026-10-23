@@ -2,7 +2,7 @@
 
 Cada arco tem a sequência de cenas, o que costuma funcionar e um `cenas.json` válido de exemplo (passa no `validarCenas`). Troque os textos e as durações. Tudo fica na grade de 120 BPM: múltiplos de 0,5 s, sem repetir transição seguida e com a última cena de pelo menos 1 s.
 
-Transições de base: `corte` (seco, na batida), `dissolve`, `deslize`, `mascara`, `zoom` e `clarao`. Também vale qualquer transição do catálogo oficial do HyperFrames (`hyperframes-animation/transitions/`), pelo nome do catálogo, com no máximo 2 "de efeito" por reel.
+Transições de base: `corte` (seco, na batida), `dissolve`, `deslize`, `mascara`, `zoom` e `clarao`. Também vale qualquer transição do registro oficial do HyperFrames (achada com `hyperframes catalog --query "…" --json`), pelo nome do registro, com no máximo 2 "de efeito" por reel.
 
 ## 1. Serviço técnico (ex.: laudo, vistoria, avaliação, consultoria)
 
